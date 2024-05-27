@@ -1,0 +1,36 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    text-align: center;
+    padding-top: 50px;
+  
+  .big-text {
+      font-size: 48px;
+      margin-bottom: 40px; /* Ajusta el espacio debajo del texto grande */
+    }
+  
+    .button-examen {
+      border-radius: 35px; /* Redondea aún más los bordes */
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Ajusta la sombra */
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Añade transición para la sombra también */
+      cursor: pointer;
+      outline: none;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      padding: 15px 30px; /* Hace los botones más grandes */
+      font-size: 18px; /* Aumenta el tamaño del texto dentro de los botones */
+      margin: 0 15px; /* Ajusta el espacio entre los botones */
+  
+      &:hover {
+        transform: translateY(-2px) scale(1.05); /* Agranda los botones un poco cuando se pasa el mouse */
+        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3); /* Ajusta la sombra cuando se pasa el mouse */
+      }
+    }
+  }
+  
