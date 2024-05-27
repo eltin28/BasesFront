@@ -1,0 +1,92 @@
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <div style="margin: 0 auto; width: 80%;">
+            <h1 style="font-weight: bold; margin-bottom: 20px; margin-top: 12px">Crea tu cuenta</h1>
+        </div>
+        <form class="formRegistro" #f="ngForm">
+            <div class="input-container">
+                <i class="fa-solid fa-user"></i>
+                <input class="Input-registro" type="text" name="nombre" [(ngModel)]="registroClienteDTO.nombre" placeholder="Nombre" required/>
+            </div>
+            <div class="input-container">
+                <i class="fa-solid fa-user"></i>
+                <input class="Input-registro" type="text" name="apellidos" [(ngModel)]="registroClienteDTO.apellidos" placeholder="Apellidos" required/>
+            </div>
+            <div class="input-container">
+                <i class="fa-solid fa-user"></i>
+                <select (change)="toggleCampVisibility($event)" name="rol" class="form-select" required [(ngModel)]="registroClienteDTO.rol">
+                    <option value="0" disabled selected value="">Rol</option>
+                    <option value="PROFESOR">PROFESOR</option>
+                    <option value="ESTUDIANTE">ESTUDIANTE</option>
+                </select>
+            </div>
+            <div class="input-container">
+            @if(rolSeleccionado == "PROFESOR") {
+                <!-- Contenido específico para PROFESOR -->
+                <i class="fa-solid fa-book"></i>
+                <select name="contenidoProfesor" class="form-select" [(ngModel)]="registroClienteDTO.materia" required>
+                    <option value="0" disabled selected value="">Materia</option>
+                    <option value="1">Matematicas</option>
+                    <option value="2">Español</option>
+                    <option value="3">Ciencias</option>
+                    <option value="4">Doctorado</option>
+                </select>
+            }@else if (rolSeleccionado == "ESTUDIANTE") {
+                <!-- Contenido específico para ESTUDIANTE -->
+                <i class="fa-solid fa-book"></i>
+                <input class="Input-registro" type="number" name="semestre" [(ngModel)]="registroClienteDTO.semestre" placeholder="Semestre" required/>
+            }
+            </div>
+            <div class="input-container">
+                <i class="fa-solid fa-envelope"></i>
+                <input class="Input-registro" type="email" name="Email" [(ngModel)]="registroClienteDTO.email" placeholder="Email" required/>
+            </div>
+            <div class="input-container">
+                <i class="fa-solid fa-lock"></i>
+                <input class="Input-registro" [type]="showPassword? 'text' : 'password'" name="Password" [(ngModel)]="registroClienteDTO.password" placeholder="Contraseña" required/>
+                <i class="fa-solid {{activeIcon}}" (click)="togglePasswordVisibility()"></i>
+            </div>
+            <div class="input-container">
+                <i class="fa-solid fa-lock"></i>
+                <input class="Input-registro" [type]="showPassword? 'text' : 'password'" name="confirmaPassword" [(ngModel)]="registroClienteDTO.confirmaPassword" required placeholder="Repetir contraseña" />
+                <i class="fa-solid {{activeIcon}}" (click)="togglePasswordVisibility()"></i>
+            </div>
+            @if (!sonIguales()) { <p>Las contraseñas no coinciden</p> }
+            <button class="buttonRegistro" type="submit" [disabled]="f.invalid || !sonIguales()" (click)="registrar()">Registrarse</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form class="formRegistro" #f="ngForm">
+            <h1 style="font-weight: bold; margin: 0;">Ingresa</h1>
+            <div class="input-container">
+                <i class="fa-solid fa-user"></i>
+                <input class="Input-registro" type="email" [(ngModel)]="loginDTO.email" [ngModelOptions]="{standalone: true}" placeholder="Email" />
+            </div>
+            <div class="input-container">
+                <i class="fa-solid fa-lock"></i>
+                <input class="Input-registro" [type]="showPassword? 'text' : 'password'" [(ngModel)]="loginDTO.password" [ngModelOptions]="{standalone: true}" placeholder="Contraseña" />
+                <i class="fa-solid {{activeIcon}}" (click)="togglePasswordVisibility()"></i>
+            </div>
+            <button class="buttonRegistro" (click)="login()">Ingresa</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1 style="font-weight: bold; margin: 0;">¿Ya tienes una cuenta?</h1>
+                <p style="font-size: 14px; font-weight: 100; line-height: 20px; letter-spacing: 0.5px; margin: 20px 0 30px;">
+                    Para mantenerte conectado con nosotros, inicia sesión con tu información personal
+                </p>
+                <button class="buttonRegistro ghost" id="signIn">Inicia sesion</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1 style="font-weight: bold; margin: 0;">¿Eres nuevo?</h1>
+                <p style="font-size: 14px; font-weight: 100; line-height: 20px; letter-spacing: 0.5px; margin: 20px 0 30px;">
+                    Da click en el botón "REGISTRATE" y comienza tu viaje con nosotros.
+                </p>
+                <button class="buttonRegistro ghost" id="signUp" >Registrate</button>
+                <app-alerta [alerta]="alerta"></app-alerta>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex">
+    <div class="container-fluid d-flex justify-content-between">
+         <div class="d-flex align-items-center">
+            <a class="navbar-brand" href="/">
+              <img class="logo" src="../../../assets/logo.png" alt="Descripción de la imagen">
+            </a>
+            <a class="navbar-brand" href="/">
+              <span class="navbar-text">QUINDIANOS</span>
+            </a>
+         </div>
+         <div>
+             <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav ml-auto">
+                  @if (isLoggedMaster) {
+                    <li>
+                      <a href="inicio-profesor" class="nav-link">Inicio</a>
+                   </li>
+                  <li>
+                     <a href="crear-examen" class="nav-link">Crear Examen</a>
+                  </li>
+                  <li>
+                    <a href="cursos" class="nav-link">Cursos</a>
+                 </li>
+                  <!-- Si el usuario está autenticado, muestra el saludo -->
+                  <li class="nav-item custom-nav-item-green">
+                    <button class="nav-link login-style" id="dropdownBtn" (click)="toggleMenu()">Hola, {{nombre}}</button>
+                    <ul class="dropdown-menu" id="dropdownMenu" [ngClass]="{'show': mostrarMenu}">
+                      <li>
+                        <button class="nav-link salirr" (click)="logout()">Salir</button>
+                      </li>
+                    </ul>                    
+                  </li>                  
+                }@else if (isLoggedEstudent) {
+                  <li>
+                    <a href="inicio-profesor" class="nav-link">Inicio</a>
+                 </li>
+                <li>
+                  <a href="cursos" class="nav-link">Cursos</a>
+               </li>
+                <!-- Si el usuario está autenticado, muestra el saludo -->
+                <li class="nav-item custom-nav-item-green">
+                  <button class="nav-link login-style" id="dropdownBtn" (click)="toggleMenu()">Hola, {{nombre}}</button>
+                  <ul class="dropdown-menu" id="dropdownMenu" [ngClass]="{'show': mostrarMenu}">
+                    <li>
+                      <button class="nav-link salirr" (click)="logout()">Salir</button>
+                    </li>
+                  </ul>                    
+                </li>     
+                }@else {
+                  <!-- Si el usuario NO está autenticado, muestra el botón de login -->
+                  <li class="nav-item custom-nav-item-green">
+                    <a class="nav-link login-style" href="registro">Login</a>
+                  </li>
+                }
+               </ul>          
+             </div>
+         </div>
+    </div>
+</nav>   
