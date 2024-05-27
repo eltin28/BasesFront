@@ -1,1 +1,28 @@
-<p>cursos works!</p>
+<div class="card" style="width: 100%; display: flex; flex-direction: column;">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0"><i class="fa-solid fa-location-dot me-3"></i>Cursos</h5>
+    </div>
+    <div class="card-body p-5" style="flex-grow: 1;">
+        <div class="mb-3">
+            <button type="button" routerLink="/crear-curso" class="btn btn-success me-2"><i class="fa-solid fa-plus me-1"></i> Crear</button>
+        </div>
+        <div class="mt-5 w-100 h-100">
+            <div class="row g-4">
+                <!-- Iteración sobre los cursos -->
+                @for (item of resultados; track $index) {
+                    <div class="col-lg-4 col-md-6 col-12" name="Tarjeta interna">
+                        <div class="card shadow-lg rounded">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.titulo }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ item.profesor }}</h6>
+                                <div class="card-body mt-3">
+                                    <a href="#" class="btn btn-primary">Ingresa</a>
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
