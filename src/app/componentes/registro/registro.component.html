@@ -21,21 +21,21 @@
                 </select>
             </div>
             <div class="input-container">
-            @if(rolSeleccionado == "PROFESOR") {
-                <!-- Contenido específico para PROFESOR -->
-                <i class="fa-solid fa-book"></i>
-                <select name="contenidoProfesor" class="form-select" [(ngModel)]="registroClienteDTO.materia" required>
-                    <option value="0" disabled selected value="">Materia</option>
-                    <option value="1">Matematicas</option>
-                    <option value="2">Español</option>
-                    <option value="3">Ciencias</option>
-                    <option value="4">Doctorado</option>
-                </select>
-            }@else if (rolSeleccionado == "ESTUDIANTE") {
-                <!-- Contenido específico para ESTUDIANTE -->
-                <i class="fa-solid fa-book"></i>
-                <input class="Input-registro" type="number" name="semestre" [(ngModel)]="registroClienteDTO.semestre" placeholder="Semestre" required/>
-            }
+                @if(rolSeleccionado == "PROFESOR") {
+                    <!-- Contenido específico para PROFESOR -->
+                    <i class="fa-solid fa-book"></i>
+                    <select name="contenidoProfesor" class="form-select" [(ngModel)]="registroClienteDTO.materia" required>
+                        <option value="0" disabled selected value="">Materia</option>
+                        <option value="1">Matematicas</option>
+                        <option value="2">Español</option>
+                        <option value="3">Ciencias</option>
+                        <option value="4">Doctorado</option>
+                    </select>
+                }@else if (rolSeleccionado == "ESTUDIANTE") {
+                    <!-- Contenido específico para ESTUDIANTE -->
+                    <i class="fa-solid fa-book"></i>
+                    <input class="Input-registro" type="number" name="semestre" [(ngModel)]="registroClienteDTO.semestre" placeholder="Semestre" required/>
+                }
             </div>
             <div class="input-container">
                 <i class="fa-solid fa-envelope"></i>

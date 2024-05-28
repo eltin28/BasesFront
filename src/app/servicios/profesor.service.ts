@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MensajeDTO } from '../dto/mensaje-dto';
 import { Observable } from 'rxjs';
+import { APIS } from '../URL/apis';
+import { RegistroUsuarioDTO } from '../dto/registro-usuario-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfesorService {
 
-  private authURL = "https://quindianoback.onrender.com/api/clientes";
+  private authURL = APIS.profesorURL;
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +20,10 @@ export class ProfesorService {
 
   public listarEstudiantesCurso(codigoProfesor: string): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.authURL}/listar-estudiantes/${codigoProfesor}`);
+  }
+
+  public registrarProfesor(cliente: RegistroUsuarioDTO): Observable<MensajeDTO> {
+    return this.http.post<MensajeDTO>(`${this.authURL}`, cliente);
   }
 
 }
