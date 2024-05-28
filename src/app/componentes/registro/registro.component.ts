@@ -40,7 +40,7 @@ export class RegistroComponent implements OnInit {
   }
 
   public registrar() {
-    if(this.rolSeleccionado = "PROFESOR"){
+    if(this.rolSeleccionado == "PROFESOR"){
       this.authServiceProfesor.registrarProfesor(this.registroClienteDTO).subscribe({
         next: (data) => {
           this.alerta = new Alerta(data.respuesta, "success");
@@ -116,7 +116,7 @@ export class RegistroComponent implements OnInit {
         }
         });
     }else {
-      console.log("Seleccione un rol");
+      console.log("Seleccione un rol", this.rolSeleccionado);
     }
   }
 }
