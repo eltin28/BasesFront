@@ -9,7 +9,7 @@ import { CursoComponent } from './componentes/curso/curso.component';
 
 export const routes: Routes = [
     // { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
-    { path: 'registro', component: RegistroComponent },
+    { path: '', component: RegistroComponent },
     { path: 'cursos', component: CursosComponent},
     { path: 'crear-examen', component: CrearExamenComponent},
     { path: 'crear-examen/cuestionario', component:CrearExamenCuestionarioComponent},
