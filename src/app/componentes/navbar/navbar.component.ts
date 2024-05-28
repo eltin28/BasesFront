@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../servicios/auth.service';
 import { CommonModule } from '@angular/common';
 import { TokenService } from '../../servicios/token.service';
 
@@ -25,7 +24,7 @@ export class NavbarComponent {
     this.mostrarMenu = this.mostrarMenu === false?true:false;
   }
 
-  constructor(private authService: AuthService, private tokenService: TokenService) {}
+  constructor(private tokenService: TokenService) {}
 
   ngOnInit(): void {
 

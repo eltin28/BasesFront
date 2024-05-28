@@ -97,15 +97,26 @@ export class RegistroComponent implements OnInit {
   //__________________________________________________________________________________________________________________
   
   public login() {
-  //     this.authService.loginCliente(this.loginDTO).subscribe({
-  //       next: data => {
-  //         this.tokenService.login(data.respuesta.token);
-  //       },
-  //       error: error => {
-  //         this.alerta = new Alerta(error.error.respuesta, "danger" );
-  //       }
-  //       });
-  // }
-  console.log(this.loginDTO);
-}
+    if(this.rolSeleccionado = "PROFESOR"){
+      this.authServiceProfesor.loginProfesor(this.loginDTO).subscribe({
+      next: data => {
+        this.tokenService.login(data.respuesta.token);
+      },
+      error: error => {
+        this.alerta = new Alerta(error.error.respuesta, "danger" );
+      }
+      });
+    }else if(this.rolSeleccionado = "ESTUDIANTE"){
+      this.authServiceEstudiante.loginEstudiante(this.loginDTO).subscribe({
+        next: data => {
+          this.tokenService.login(data.respuesta.token);
+        },
+        error: error => {
+          this.alerta = new Alerta(error.error.respuesta, "danger" );
+        }
+        });
+    }else {
+      console.log("Seleccione un rol");
+    }
+  }
 }

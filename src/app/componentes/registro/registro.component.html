@@ -67,6 +67,14 @@
                 <input class="Input-registro" [type]="showPassword? 'text' : 'password'" [(ngModel)]="loginDTO.password" [ngModelOptions]="{standalone: true}" placeholder="Contraseña" />
                 <i class="fa-solid {{activeIcon}}" (click)="togglePasswordVisibility()"></i>
             </div>
+            <div class="input-container">
+                <i class="fa-solid fa-user"></i>
+                <select (change)="toggleCampVisibility($event)" name="rol" class="form-select" required>
+                    <option value="0" disabled selected value="">Rol</option>
+                    <option value="PROFESOR">PROFESOR</option>
+                    <option value="ESTUDIANTE">ESTUDIANTE</option>
+                </select>
+            </div>
             <button class="buttonRegistro" (click)="login()">Ingresa</button>
         </form>
     </div>
