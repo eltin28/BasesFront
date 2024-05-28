@@ -4,7 +4,7 @@ import { Buffer } from "buffer";
 import { UserInfoDTO } from '../dto/user-info-dto';
 import { log } from 'console';
 
-const TOKEN_KEY = "AuthToken";
+const TOKEN_KEY = "hlu60kkasdn32jiofh0c31z64m3z1wkp7vf";
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +62,7 @@ export class TokenService {
 
   public login(token: string) {
     this.setToken(token);
-    this.router.navigate(["/"]).then(() => {
+    this.router.navigate(["/cursos"]).then(() => {
       window.location.reload();
     });
   }

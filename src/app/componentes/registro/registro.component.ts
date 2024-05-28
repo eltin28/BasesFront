@@ -123,7 +123,7 @@ export class RegistroComponent implements OnInit {
         }
         });
     }else {
-      console.log("Seleccione un rol");
+      console.log("Seleccione un rol", this.rolSeleccionado);
     }
   }
 }
