@@ -40,7 +40,7 @@ export class RegistroComponent implements OnInit {
   }
 
   public registrar() {
-    if(this.rolSeleccionado = "PROFESOR"){
+    if(this.rolSeleccionado === "PROFESOR"){
       this.authServiceProfesor.registrarProfesor(this.registroClienteDTO).subscribe({
         next: (data) => {
           this.alerta = new Alerta(data.respuesta, "success");
@@ -49,7 +49,7 @@ export class RegistroComponent implements OnInit {
           this.alerta = new Alerta(error.error.respuesta, "danger");
         }
       });
-    }else if (this.rolSeleccionado = "ESTUDIANTE"){
+    }else if (this.rolSeleccionado === "ESTUDIANTE"){
       this.authServiceEstudiante.registrarEstudiante(this.registroClienteDTO).subscribe({
         next: (data) => {
           this.alerta = new Alerta(data.respuesta, "success");
@@ -97,7 +97,12 @@ export class RegistroComponent implements OnInit {
   //__________________________________________________________________________________________________________________
   
   public login() {
-    if(this.rolSeleccionado = "PROFESOR"){
+    console.log('Antes de los if: ', this.rolSeleccionado);
+    
+
+    if(this.rolSeleccionado === "PROFESOR"){
+      console.log('Deberia ser PROFESOR. ', this.rolSeleccionado);
+
       this.authServiceProfesor.loginProfesor(this.loginDTO).subscribe({
       next: data => {
         this.tokenService.login(data.respuesta.token);
@@ -106,7 +111,9 @@ export class RegistroComponent implements OnInit {
         this.alerta = new Alerta(error.error.respuesta, "danger" );
       }
       });
-    }else if(this.rolSeleccionado = "ESTUDIANTE"){
+    }else if(this.rolSeleccionado === "ESTUDIANTE"){
+      console.log('Deberia ser ESTUDIANTE. ', this.rolSeleccionado);
+
       this.authServiceEstudiante.loginEstudiante(this.loginDTO).subscribe({
         next: data => {
           this.tokenService.login(data.respuesta.token);

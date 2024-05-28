@@ -1,6 +1,6 @@
 export const APIS = {
-    estudianteURL: "localhost:3000/api/estudiantes",
-    profesorURL: "localhost:3000/api/profesor",
+    estudianteURL: "http://localhost:3000/api/estudiantes",
+    profesorURL: "http://localhost:3000/api/profesores",
     clientesURL: "https://quindianoback.onrender.com/api/clientes"
 
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Buffer } from "buffer";
 import { UserInfoDTO } from '../dto/user-info-dto';
+import { log } from 'console';
 
 const TOKEN_KEY = "AuthToken";
 
@@ -74,15 +75,18 @@ export class TokenService {
   }
 
   public decodePayload(token: string): any {
+    console.log('Token recibido en el front: ', token);
+
     const payload = token!.split(".")[1];
     const payloadDecoded = Buffer.from(payload, 'base64').toString('ascii');
     const values = JSON.parse(payloadDecoded);
+
     return values;
   }
   
   public getAllTokenData(): UserInfoDTO {
     const token = this.getToken(); // Asume que getToken devuelve el token JWT
-    if (token) {
+    if (token || token !== null) {
       const decodedValues = this.decodePayload(token); // Usa decodePayload para obtener el payload decodificado
       return new UserInfoDTO(
         decodedValues.id, 
