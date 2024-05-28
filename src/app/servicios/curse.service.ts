@@ -6,7 +6,7 @@ import { MensajeDTO } from '../dto/mensaje-dto';
 @Injectable({
   providedIn: 'root'
 })
-export class CurseServiceService {
+export class CurseService {
 
   private negociosURL = "https://quindianoback.onrender.com/api/publica";
 

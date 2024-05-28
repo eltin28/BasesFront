@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ItemCursoDTO } from '../../dto/item-curso-dto';
 import { TokenService } from '../../servicios/token.service';
-import { CurseServiceService } from '../../servicios/curse-service.service';
+import { CurseService } from '../../servicios/curse.service';
 
 @Component({
   selector: 'app-cursos',
@@ -15,11 +15,11 @@ export class CursosComponent {
 
   resultados: ItemCursoDTO[];
 
-  constructor(private tokenService: TokenService, private curseService: CurseServiceService){
+  constructor(private tokenService: TokenService, private curseService: CurseService){
     this.resultados = [];
   }
 
-  public listarNegocios(){
+  public listarCursos(){
     const codigo = this.tokenService.getAllTokenData().id;
     this.curseService.listarCursos(codigo).subscribe({
         next: (data) => {

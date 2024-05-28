@@ -1,0 +1,19 @@
+.nav-tabs {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan si es necesario */
+}
+
+.opciones {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px;
+  cursor: pointer;
+}
+
+.opcion {
+  margin-right: 20px;
+  padding: 10px;
+  border-right-color: gray;
+}

@@ -1,0 +1,19 @@
+<div class="card" style="width: 100%; display: flex; flex-direction: column;">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0"><i class="fa-solid fa-location-dot me-3"></i>Curso </h5>
+    </div>
+    <div class="card-body">
+        <ul class="nav-tabs">
+            <li class="opciones">
+                @for (item of tabs; track $index) {
+                <a class="opcion nav-link" (click)="changeTab(item.title)">{{item.title}}</a>
+                }
+            </li>
+        </ul> 
+        @if (activeTab == "Contenido") {
+            <app-contenido></app-contenido>
+        }@else if (activeTab == "Personas") {
+            <app-personas></app-personas>
+        }
+    </div>
+</div>
